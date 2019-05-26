@@ -11,8 +11,7 @@ This is part of a larger project to automatically pull arxiv papers and e-mail t
 ## Usage
 
 ## Dependencies and Framework
-
-The dashboard was created using Dash and Plotly and was then deployed using Heroku. 
+This class uses a premade Python Arxiv API wrapper.
 
 Built with:
 * [arxiv](https://github.com/lukasschwab/arxiv.py)
