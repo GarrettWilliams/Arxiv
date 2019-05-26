@@ -49,10 +49,10 @@ class Arxiv():
             setattr(self, arg, val)
 
         self.have_queried_papers = False
-        self.have_query_results_filtered_date = True
+        self.have_query_results_filtered_date = False
 
     @staticmethod
-    def search_query(categories="", authors=""):
+    def simple_search_query_generator(categories="", authors=""):
         """
         Function for generating search query for arxiv. The actual categories, authors and key phrases 
         to filter by are stored in external text files. 
@@ -119,7 +119,7 @@ class Arxiv():
 
         if date == 'Today':
             today = datetime.today().replace(minute=0, second=0, hour=0,
-                                             microsecond=0) - timedelta(days=2)
+                                             microsecond=0)
             filtered = []
             for paper in self.queried_papers_unfiltered:
                 paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
@@ -189,5 +189,4 @@ class Arxiv():
 
                 
 if __name__ == '__main__':
-    example = Arxiv(number_of_repeats=2, max_results=2)
-    example.arxiv_papers(papers_desired=15, store_papers=True)
+    pass
