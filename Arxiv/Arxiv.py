@@ -117,50 +117,27 @@ class Arxiv():
         if not self.have_queried_papers:
             self._generate_papers(search_query_string=search_query_string)
 
-            if date == 'Today':
-                today = datetime.today().replace(minute=0, second=0, hour=0,
-                                                 microsecond=0) - timedelta(days=2)
-                filtered = []
-                for paper in self.queried_papers_unfiltered:
-                    paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
-                    if paper_publication_date >= today:
-                        filtered.append(paper)
-                self.query_results_filtered_date = filtered
+        if date == 'Today':
+            today = datetime.today().replace(minute=0, second=0, hour=0,
+                                             microsecond=0) - timedelta(days=2)
+            filtered = []
+            for paper in self.queried_papers_unfiltered:
+                paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
+                if paper_publication_date >= today:
+                    filtered.append(paper)
+            self.query_results_filtered_date = filtered
 
-            elif date == 'All':
-                self.query_results_filtered_date = self.queried_papers_unfiltered
+        elif date == 'All':
+            self.query_results_filtered_date = self.queried_papers_unfiltered
 
-            else:
-                filter_date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-                filtered = []
-                for paper in self.queried_papers_unfiltered:
-                    paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
-                    if paper_publication_date >= today:
-                        filtered.append(paper)
-                self.query_results_filtered_date = filtered
-
-        elif self.have_queried_papers:
-            if date == 'Today':
-                today = datetime.today().replace(minute=0, second=0, hour=0,
-                                                 microsecond=0) - timedelta(days=2)
-                filtered = []
-                for paper in self.queried_papers_unfiltered:
-                    paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
-                    if paper_publication_date >= today:
-                        filtered.append(paper)
-                self.query_results_filtered_date = filtered
-
-            elif date == 'All':
-                self.query_results_filtered_date = self.queried_papers_unfiltered
-
-            else:
-                filter_date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-                filtered = []
-                for paper in self.queried_papers_unfiltered:
-                    paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
-                    if paper_publication_date >= today:
-                        filtered.append(paper)
-                self.query_results_filtered_date = filtered
+        else:
+            filter_date = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+            filtered = []
+            for paper in self.queried_papers_unfiltered:
+                paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
+                if paper_publication_date >= today:
+                    filtered.append(paper)
+            self.query_results_filtered_date = filtered
 
         self.have_query_results_filtered_date = True
 
@@ -208,7 +185,7 @@ class Arxiv():
         """
 
         for paper in self.fav_papers:
-            arxiv.download(paper, dirpath=paper_dump, slugify=self._custom_slugify)
+            arxiv.download(paper, dirpath=folder_path, slugify=self._custom_slugify)
 
                 
 if __name__ == '__main__':
