@@ -12,7 +12,7 @@ Arxiv has not been added to PyPi yet. To use clone the repository, and then pip 
 For a quick example of usage see the examples folder. 
 
 ## Dependencies and Framework
-This class uses a premade Python Arxiv API wrapper.
+For the most part this is just a wrapper around a premade Python Arxiv API wrapper.
 
 Built with:
 * [arxiv](https://github.com/lukasschwab/arxiv.py)
