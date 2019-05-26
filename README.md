@@ -11,6 +11,10 @@ This is a quick and dirty solution as part of a larger project to automatically 
 ## Usage
 To be added...
 
+A search query is generated from three files: authors.txt, key_phrases.txt and categories.txt. Authors.txt contains a list of authors to search for, key_phrases.txt contains phrases to search for (e.g., machine learning, natural language processing) and categories are Arxiv category labels. The search query then combined all terms in all categories via logical ORs.
+
+## Examples
+
 ## Dependencies and Framework
 This class uses a premade Python Arxiv API wrapper.
 
