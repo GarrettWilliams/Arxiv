@@ -1,1 +1,4 @@
 *ipynb_checkpoints*
+/arxiv_papers/*
+*venv*
+*pycache*

@@ -82,7 +82,7 @@ class Arxiv():
 
         if categories_filter:
             categories_path = os.getcwd()
-            categories_path = os.path.join(categories_path, 'categories.txt')
+            categories_path = os.path.join(categories_path, 'query_information', 'categories.txt')
 
             with open(categories_path, 'r') as f:
                 categories = f.read().splitlines()
@@ -90,7 +90,7 @@ class Arxiv():
 
         if authors_filter:
             authors_path = os.getcwd()
-            authors_path = os.path.join(authors_path, 'authors.txt')
+            authors_path = os.path.join(authors_path, 'query_information', 'authors.txt')
 
             with open(authors_path, 'r') as f:
                 authors = f.read().splitlines()
@@ -98,8 +98,7 @@ class Arxiv():
 
         if key_phrases_filter:
             key_phrases_path = os.getcwd()
-            key_phrases_path = os.path.join(
-                key_phrases_path, 'key_phrases.txt')
+            key_phrases_path = os.path.join(key_phrases_path, 'query_information', 'key_phrases.txt')
 
             with open(key_phrases_path, 'r') as f:
                 key_phrases = f.read().splitlines()
