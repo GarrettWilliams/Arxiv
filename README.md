@@ -1,5 +1,6 @@
 # Arxiv
 [![Build Status](https://travis-ci.com/GarrettWilliams/Arxiv.svg?token=B2hCyDjpt2bTTR7kwpVL&branch=master)](https://travis-ci.com/GarrettWilliams/Arxiv)
+
 Arxiv class for generating and storing arxiv papers. 
 
 Currently this class is used to create an arxiv API compatible search query, generate papers from that search query,
