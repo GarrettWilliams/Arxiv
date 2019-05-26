@@ -15,7 +15,8 @@ import time
 
 class Arxiv():
     """
-    Class for pulling and downloading Arxiv data according to some logic.
+    Python class used to return and download Arxiv results based on Arxiv search queries,
+    with optional filtering based on time and a user defined filter.
 
     Uses the arxiv python wrapper "arxiv" found at:
         https://github.com/lukasschwab/arxiv.py
