@@ -3,7 +3,7 @@ import sys
 import os
 path = os.path.join(os.path.normpath(os.getcwd() + os.sep + os.pardir), 'Arxiv')
 sys.path.insert(0, path)
-from Arxiv import Arxiv
+from Arxiv.Arxiv import Arxiv
 
 def search_query(categories_filter=True, authors_filter=True, key_phrases_filter=False):
     """
