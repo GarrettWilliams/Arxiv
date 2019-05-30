@@ -190,4 +190,10 @@ class Arxiv():
 
                 
 if __name__ == '__main__':
-    pass
+    arxiv_example = Arxiv(number_of_repeats=2, max_results=5)
+    authors_path = os.path.join(os.path.normpath(os.getcwd() + os.sep + os.pardir), 'Arxiv', 'examples', 'query_information', 'authors.txt')
+    categories_path = os.path.join(os.path.normpath(os.getcwd() + os.sep + os.pardir), 'Arxiv', 'examples', 'query_information', 'categories.txt')
+    search_query_string = arxiv_example.simple_search_query_generator(authors=authors_path, categories=categories_path)
+    arxiv_example.arxiv_papers(search_query_string, store_papers=False)
+    
+    print(arxiv_example.fav_papers)
