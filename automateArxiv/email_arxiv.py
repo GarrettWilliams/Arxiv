@@ -11,7 +11,7 @@ import datetime
 from Arxiv import Arxiv
 
 today = str(datetime.datetime.now().date())
-root_folder = r'C:\Users\Garrett\Desktop'
+root_folder = 'home/pi/Desktop'
 path_to_papers_folder = os.path.join(root_folder, 'Arxiv_papers')
 path_to_individual_date = os.path.join(path_to_papers_folder, today)
 
@@ -22,13 +22,13 @@ if not os.exists(path_to_individual_date):
     os.mkdir(path_to_individual_date)
 
 arxiv_today = Arxiv()
-todays_papers = arxiv_today.arxiv_papers(
-    store=True, path=path_to_individual_date)
+todays_papers = arxiv_today.arxiv_papers(search_string_query, store_papers=True, folder_path=path_to_individual_date)
 
 recipients = ['williams.garrettm@gmail.com']
 email_subject = f'arxiv papers from {today}'
-contents = []
-for file in os.listdir(path):
-    contents.append(file)
 
-yagmail.SMTP().send(to=recipients, subject=email_subject, contents=contents)
+contents = []
+for arxiv_paper in os.listdir(path_to_individual_date):
+    contents.append(arxiv_paper)
+
+yagmail.SMTP(os.environ.get('automatearxiv_gmail_name'), os.environ.get('automatearxiv_gmail_password').send(to=recipients, subject=email_subject, contents=contents)
