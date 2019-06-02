@@ -14,7 +14,7 @@ Repository is structured as follows:
 * automateArxiv contains a script for generating the right folder structure before downloading, and then automatically emailing them to myself. 
 * run_arxiv.sh in the root is the shell script crontab reads once a day (during weekdays). 
 
-Should one want to use it they can clone this repository and install the pip install the requirements.txt folder.
+Should one want to use it they can clone this repository and pip install the requirements.txt folder.
 
 Then one needs to:
 <ol>
