@@ -136,7 +136,7 @@ class Arxiv():
             filtered = []
             for paper in self.queried_papers_unfiltered:
                 paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
-                if paper_publication_date >= today:
+                if paper_publication_date >= date:
                     filtered.append(paper)
             self.query_results_filtered_date = filtered
 
@@ -192,7 +192,7 @@ class Arxiv():
 if __name__ == '__main__':
 
 
-    arxiv_example = Arxiv()
+    arxiv_example = Arxiv(number_of_repeats=2, max_results=36)
 
 
     authors_path = os.path.join(os.path.normpath(os.getcwd() + os.sep + os.pardir), 'Arxiv', 'examples', 'query_information', 'authors.txt')
@@ -203,11 +203,5 @@ if __name__ == '__main__':
 
     folder_path = r'C:\Users\Garrett\Desktop'
 
-
-    dates = ['2019-05-28 01:23:34', '2019-05-27 01:23:34', '2019-05-26 01:23:34', '2019-05-25 01:23:34', ]
-
-
-    for day in dates:
-        print(f'Processing {day}')
-        arxiv_example._generate_papers(search_query_string)
-        print(len(arxiv_example.queried_papers_unfiltered))
+    arxiv_example.arxiv_papers(search_query_string, store_papers=True, folder_path=r'C:\Users\Garrett\Desktop', date='All')
+    print(arxiv_example.fav_papers)
