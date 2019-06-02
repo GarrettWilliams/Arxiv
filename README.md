@@ -4,14 +4,15 @@
 
 This repository contains code for a project to automate the finding and emailing of arxiv papers on a regular schedule run on a raspberry pi. In particular the Arxiv class generates Arxiv API compatible search queries from given terms, pulls arxiv paper information, filters based on date, filters based on user created filter and can optionally directly download retrieved papers. 
 
-The current version is a quick dirty solution where the user filter just acts by taking the five most recently published papers from the last 24 hours. I will add updates in the future but this is sufficient to set up the automated portion. 
+Currently only the five most recent papers are grabbed - I will be updating it so that papers are chosen based on a meaningful metric and so that certain authors papers are always returned. 
 
 ## Usage and Structure
+This was just a fun project to play with a raspberry pi so I won't be adding this to PyPi nor making it more robust at this time. Much of it is hard coded paths and code. 
+
+Repository is structured as follows:
 * Arxiv folders contain the core code for pulling, filtering and downloading papers from Arxiv. 
 * automateArxiv contains a script for generating the right folder structure before downloading, and then automatically emailing them to myself. 
 * run_arxiv.sh in the root is the shell script crontab reads once a day (during weekdays). 
-
-This was just a fun project to play with a raspberry pi so I won't be adding this to PyPi nor making it more robust at this time. Much of it is hard coded paths and code. 
 
 Should one want to use it they can clone this repository and install the pip install the requirements.txt folder.
 
