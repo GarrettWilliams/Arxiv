@@ -136,13 +136,13 @@ class Arxiv():
             filtered = []
             for paper in self.queried_papers_unfiltered:
                 paper_publication_date = datetime.strptime(' '.join(paper['published'].split('T'))[:-1], '%Y-%m-%d %H:%M:%S')
-                if paper_publication_date >= today:
+                if paper_publication_date >= date:
                     filtered.append(paper)
             self.query_results_filtered_date = filtered
 
         self.have_query_results_filtered_date = True
 
-    def arxiv_papers(self, search_query_string, papers_desired=5, date='Today', store_papers=False, folder_path='default'):
+    def arxiv_papers(self, search_query_string, papers_desired=5, date='Today', store_papers=False, folder_path=None):
         """
         Returns arxiv API objects for papers according to search_query string filtered based on time and custom filter.
 
@@ -165,12 +165,12 @@ class Arxiv():
             Folder path for where to store files. 
         """
         
-        self._filter_papers_time(search_query_string=search_query_string, date='Today')
+        self._filter_papers_time(search_query_string=search_query_string, date=date)
 
         if self.have_query_results_filtered_date:
             self.fav_papers = self.query_results_filtered_date[:papers_desired]
 
-        if store_papers:
+        if store_papers and folder_path is not None:
             self._download_papers(folder_path=folder_path)
 
     def _custom_slugify(self, obj):
@@ -190,10 +190,18 @@ class Arxiv():
 
                 
 if __name__ == '__main__':
-    arxiv_example = Arxiv(number_of_repeats=2, max_results=5)
+
+
+    arxiv_example = Arxiv(number_of_repeats=2, max_results=36)
+
+
     authors_path = os.path.join(os.path.normpath(os.getcwd() + os.sep + os.pardir), 'Arxiv', 'examples', 'query_information', 'authors.txt')
     categories_path = os.path.join(os.path.normpath(os.getcwd() + os.sep + os.pardir), 'Arxiv', 'examples', 'query_information', 'categories.txt')
     search_query_string = arxiv_example.simple_search_query_generator(authors=authors_path, categories=categories_path)
-    arxiv_example.arxiv_papers(search_query_string, store_papers=False)
     
+
+
+    folder_path = r'C:\Users\Garrett\Desktop'
+
+    arxiv_example.arxiv_papers(search_query_string, store_papers=True, folder_path=r'C:\Users\Garrett\Desktop', date='All')
     print(arxiv_example.fav_papers)
