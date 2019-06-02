@@ -6,8 +6,8 @@ This repository contains code for a project to automate the finding and emailing
 
 Currently only the five most recent papers are grabbed - I will be updating it so that papers are chosen based on a meaningful metric and so that certain authors papers are always returned. 
 
-## Usage and Structure
-This was just a fun project to play with a raspberry pi so I won't be adding this to PyPi nor making it more robust at this time. Much of it is hard coded paths and code. 
+## Usage
+This was just a fun project to play with a raspberry pi so I won't be adding this to PyPi nor making it more robust at this time. Much of it is hard coded paths and code and so an inconvenient amount of user input is needed.
 
 Repository is structured as follows:
 * Arxiv folders contain the core code for pulling, filtering and downloading papers from Arxiv. 
